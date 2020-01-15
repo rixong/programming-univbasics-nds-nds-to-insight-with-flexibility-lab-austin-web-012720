@@ -54,28 +54,11 @@ end
 
 def movies_with_directors_set(source)
   
-    #iter over source adding each director's name to each movie array and then adding that array to result array
-    
-    result = []
-    source.each { |director|
-      directors_movies = []
-      director[:movies].each { |movie|
-        directors_movies.push(movie_with_director_name(director[:name], movie))
-      }
-      result.push(directors_movies)
-    }
-    return result
-  
-  # GOAL: For each director, find their :movies Array and stick it in a new Array
-  #
-  # INPUT:
-  # * source: An Array of Hashes containing director information including
-  # :name and :movies
-  #
-  # RETURN:
-  #
-  # Array of Arrays containing all of a director's movies. Each movie will need
-  # to have a :director_name key added to it.
+  result = []
+  source.each { |director|
+    result.push(movies_with_director_key(director[:name], director[:movies]))
+  }
+  return result
 end
 
 # ----------------    End of Your Code Region --------------------
